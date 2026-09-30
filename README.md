@@ -81,6 +81,16 @@ skills/apple-writing/tools/fetch-apple-copy.sh hig writing
 skills/apple-writing/tools/fetch-apple-copy.sh grep "serial comma"
 ```
 
+If you clone this and start committing, point your git identity at a noreply
+address first — commits carry whatever `user.email` said when they were made,
+forever, and GitHub's "keep my email private" setting only covers web-based
+operations, not commits made from a machine. On a fresh machine git guesses
+`user@hostname`, which leaks more than an email does:
+
+```bash
+tools/setup-git-identity.sh        # see what it would do: --dry-run
+```
+
 ## What’s in the skill
 
 ```
