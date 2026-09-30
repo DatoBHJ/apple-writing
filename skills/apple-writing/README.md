@@ -7,7 +7,7 @@ This is the prose counterpart to the `apple-design` skill, which covers Apple’
 ## Install
 
 ```bash
-npx skills add DatoBHJ/Skills            # detects your harness
+npx skills add DatoBHJ/apple-writing            # detects your harness
 ./skills/apple-writing/install.sh claude # or: dsh, codex, cursor, agents, /custom/path
 ```
 

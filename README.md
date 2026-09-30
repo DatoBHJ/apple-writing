@@ -23,7 +23,7 @@ The two rulebooks genuinely conflict. The Style Guide says a sentence fragment t
 ### Any supported agent — one command
 
 ```bash
-npx skills add DatoBHJ/Skills
+npx skills add DatoBHJ/apple-writing
 ```
 
 The [skills CLI](https://github.com/vercel-labs/skills) detects your harness and installs to the right place. Add `--agent claude-code` (or `codex`, `cursor`, `opencode`, …) to target one explicitly, or `-g` for a global install.
@@ -31,7 +31,7 @@ The [skills CLI](https://github.com/vercel-labs/skills) detects your harness and
 ### Claude Code — as a plugin marketplace
 
 ```
-/plugin marketplace add DatoBHJ/Skills
+/plugin marketplace add DatoBHJ/apple-writing
 /plugin install apple-writing@apple-writing-skills
 ```
 
