@@ -1,0 +1,21 @@
+{
+  "name": "apple-writing-skills",
+  "owner": {
+    "name": "King Bob (DatoBHJ)"
+  },
+  "metadata": {
+    "description": "Write English text in Apple's own voice — across marketing, interface and documentation surfaces.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "apple-writing",
+      "description": "Routes any piece of English text to the right Apple register — marketing, interface or editorial — and rewrites it with the word choice, sentence shape and evidence rules Apple actually publishes. Covers product pages, buttons and error messages, READMEs, reports, emails, legal text, and single-word surfaces, with a mechanical style checker, a Vale style and an eval suite.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/apple-writing"
+      ]
+    }
+  ]
+}

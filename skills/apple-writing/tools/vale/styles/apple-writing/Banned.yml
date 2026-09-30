@@ -1,0 +1,35 @@
+# Terms Apple's style guide bans or replaces. Source: ASG, "Writing inclusively"
+# and the A–Z entries. Level is error: these are not preferences.
+
+extends: substitution
+message: "Don't use '%s'. %s"
+link: https://support.apple.com/guide/applestyleguide/general-guidelines-apd91d6c2458/web
+level: error
+ignorecase: true
+swap:
+  blacklists?: "use 'deny list'"
+  whitelists?: "use 'allow list'"
+  master/slave: "use 'primary/replica'"
+  slaves?: "use 'replica' or 'secondary'"
+  grandfathered: "use 'legacy' or 'exempt'"
+  sanity checks?: "use 'consistency check'"
+  sanity tests?: "use 'consistency test'"
+  man-in-the-middle: "use 'on-path attacker'"
+  he/she: "use 'they'"
+  s/he: "use 'they'"
+  handicapped: "use 'person with a disability'"
+  crippled: "use 'disabled' or name the limitation"
+  suffers from: "use neutral phrasing"
+  afflicted with: "use neutral phrasing"
+  victim of: "use neutral phrasing"
+  normal users?: "avoid framing people as abnormal"
+  dummies: "use 'placeholder' or 'sample'"
+  black hat: "don't use colour as a value judgement"
+  white hat: "don't use colour as a value judgement"
+  red team: "don't use colour as a value judgement"
+  deaf and dumb: "use 'deaf'"
+  deaf-mute: "use 'deaf' or 'hard of hearing'"
+  wheelchair-bound: "use 'uses a wheelchair'"
+  confined to a wheelchair: "use 'uses a wheelchair'"
+  the users?: "address the reader as 'you' (HIG, Inclusion)"
+  the players?: "address the reader as 'you' (HIG, Inclusion)"

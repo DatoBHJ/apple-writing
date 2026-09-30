@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "note": "Each case: a prompt, the surface it belongs to, mechanical assertions, and a reference answer. The reference answers are written to pass their own assertions — run `./run.sh --selftest` to prove the suite is coherent. Assertions are necessary, not sufficient: rubric.md grades what a regex cannot.",
+  "cases": [
+    {
+      "id": "doc-01-dejargon",
+      "surface": "editorial",
+      "prompt": "Rewrite for a README: 'In order to utilize the cache prior to making a request, the client should be configured with a TTL, etc.'",
+      "why": "Editorial register: substitution rules from the Apple Style Guide, one idea per sentence.",
+      "assert": {
+        "must_not_match": ["(?i)\\butiliz", "(?i)\\bprior to\\b", "(?i)\\bin order to\\b", "(?i)\\betc\\."],
+        "must_match": ["(?i)before|first"],
+        "max_sentences": 3
+      },
+      "reference": "Set a TTL on the client to cache requests. The cache is checked before each request is sent."
+    },
+    {
+      "id": "doc-02-first-person",
+      "surface": "editorial",
+      "prompt": "Rewrite: 'We recommend that you configure the timeout, because we've seen many users hit this.'",
+      "why": "ASG: 'Don't use the first-person pronouns we, us, or I; rewrite in terms of the reader or the product.'",
+      "assert": {
+        "must_not_match": ["(?i)\\bwe\\b", "(?i)\\bour\\b", "(?i)\\bus\\b"],
+        "must_match": ["(?i)timeout"],
+        "max_words": 30
+      },
+      "reference": "Set the timeout. The default is too short for slow networks, and requests fail before they finish."
+    },
+    {
+      "id": "ui-01-error-message",
+      "surface": "interface",
+      "prompt": "Write the error shown when someone types a 5-character password.",
+      "why": "HIG: errors 'avoid blame, and be clear about what someone can do to fix it'; no interjections; state the fix, not the fault.",
+      "assert": {
+        "must_not_match": ["(?i)oops", "(?i)uh-oh", "(?i)\\binvalid\\b", "(?i)\\byou (forgot|failed|must)\\b", "(?i)\\berror\\b"],
+        "must_match": ["(?i)at least|choose|use"],
+        "max_words": 14
+      },
+      "reference": "Choose a password with at least 8 characters."
+    },
+    {
+      "id": "ui-02-button-label",
+      "surface": "interface",
+      "prompt": "A button that saves the current draft and closes the editor. Label it.",
+      "why": "HIG: 'it's almost always best to use a verb'; no cuteness; the label names the action.",
+      "assert": {
+        "must_not_match": ["(?i)(let's|click here)", "(?i)\\!", "(?i)okay|ok\\b"],
+        "must_match": ["^(Save|Done|Keep|Store)"],
+        "max_words": 3,
+        "max_chars": 20
+      },
+      "reference": "Save"
+    },
+    {
+      "id": "ui-03-empty-state",
+      "surface": "interface",
+      "prompt": "Empty state for a projects list a new user has not filled yet.",
+      "why": "Interface register: what this place is for, plus the first action. No jokes, no blame.",
+      "assert": {
+        "must_not_match": ["(?i)oops", "(?i)nothing here", "(?i)you haven't", "(?i)\\!", "(?i)\\bwe\\b"],
+        "must_match": ["(?i)create|add|start|new"],
+        "max_sentences": 2
+      },
+      "reference": "No projects yet. Create one to keep its tasks, notes, and files together."
+    },
+    {
+      "id": "mkt-01-hero-with-footnote",
+      "surface": "marketing",
+      "prompt": "Hero line and its small print for a laptop whose battery lasts up to 24 hours in Apple's own testing.",
+      "why": "Marketing register: claim + hedge + evidence are one unit. Never the punchline alone.",
+      "assert": {
+        "must_match": ["(?i)up to", "(?i)test"],
+        "must_not_match": ["(?i)\\!", "(?i)\\bwe\\b", "(?i)guaranteed"],
+        "max_sentences": 3
+      },
+      "reference": "Longest battery life ever in a Mac.² Up to 24 hours.2 Testing conducted by Apple in September 2025 using preproduction systems; battery life varies by use and configuration."
+    },
+    {
+      "id": "mkt-02-unhedged-claim",
+      "surface": "marketing",
+      "prompt": "Turn 'the new chip is 6x faster' into copy you can defend.",
+      "why": "A comparative number without its hedge and its method is the failure mode that advertising regulators punish.",
+      "assert": {
+        "must_match": ["(?i)up to|as much as", "(?i)test|compar"],
+        "must_not_match": ["(?i)\\bwe\\b", "(?i)guaranteed", "(?i)always"]
+      },
+      "reference": "Up to 6x faster than the previous generation.1 1. Testing conducted by Apple in September 2025 using preproduction systems and a beta build; performance varies by configuration."
+    },
+    {
+      "id": "word-01-status",
+      "surface": "interface",
+      "prompt": "One-word status shown while files are being uploaded and have not finished.",
+      "why": "A single string is still a decision: a state the reader recognizes, not a feeling and not an exclamation.",
+      "assert": {
+        "must_not_match": ["(?i)oops", "(?i)uh-oh", "(?i)\\!", "(?i)\\?$"],
+        "max_words": 2,
+        "max_chars": 18
+      },
+      "reference": "Uploading"
+    },
+    {
+      "id": "word-02-name",
+      "surface": "marketing",
+      "prompt": "Name a feature that keeps a copy of a file on the device so it opens without a network.",
+      "why": "Naming: the noun the reader already uses. No cuteness, no possessive pronoun, no invented brand word.",
+      "assert": {
+        "must_not_match": ["(?i)^your ", "(?i)magic", "(?i)smart", "(?i)super", "(?i)\\!", "(?i)\\bwe\\b"],
+        "max_words": 3,
+        "max_chars": 24
+      },
+      "reference": "Offline Copy"
+    },
+    {
+      "id": "code-01-commit-subject",
+      "surface": "editorial",
+      "prompt": "Commit subject for a change that adds retries to idempotent requests.",
+      "why": "Editorial register, code surface: imperative, no period, no first person, one idea.",
+      "assert": {
+        "must_match": ["^(Add|Retry|Retries|Make|Fix|Support)\\b"],
+        "must_not_match": ["(?i)\\bwe\\b", "\\.$", "(?i)\\!", "(?i)simply|just|obviously"],
+        "max_chars": 60
+      },
+      "reference": "Add retries for idempotent requests"
+    },
+    {
+      "id": "data-01-metric-line",
+      "surface": "editorial",
+      "prompt": "Turn this internal phrasing into a sentence a fan understands, keeping the number: 'Projected line-breaking rate 0.42 (model output, no 360 tracking this season)'.",
+      "why": "Data surface: the conclusion uses the reader's vocabulary; method and limits move to the small print, never into the sentence.",
+      "assert": {
+        "must_match": ["42%"],
+        "must_not_match": ["(?i)model|projected|geometry|correlat|lower bound"],
+        "max_words_line1": 22,
+        "max_words": 45,
+        "requires": "a separate caveat line stating the number is an estimate"
+      },
+      "reference": "About 42% of his passes get past a defender.\n\nAn estimate: this season has no tracking, so the number is worked out from where each pass started and finished, and how much pressure was around it."
+    },
+    {
+      "id": "plain-01-alt-text",
+      "surface": "interface",
+      "prompt": "Alt text for a chart showing pass completion rising from 71% to 84% over five seasons.",
+      "why": "Accessibility surface: the information, not a description of the image; and not 'image of'.",
+      "assert": {
+        "must_not_match": ["(?i)^image of", "(?i)^picture of", "(?i)chart of", "(?i)\\!", "(?i)\\bwe\\b"],
+        "must_match": ["(?i)71|84|rose|risen|increased|climb"],
+        "max_words": 30
+      },
+      "reference": "Pass completion rises from 71% to 84% over five seasons."
+    },
+    {
+      "id": "plain-02-readme-one-liner",
+      "surface": "editorial",
+      "prompt": "One-line description for a CLI that checks prose against the Apple Style Guide.",
+      "why": "Editorial register: what it is and who it is for. No marketing adjectives, no first person, no superlatives.",
+      "assert": {
+        "must_not_match": ["(?i)powerful|blazing|seamless|revolutionary|best|ultimate|effortless", "(?i)\\bwe\\b", "(?i)\\!", "(?i)simply"],
+        "max_sentences": 1,
+        "max_words": 24
+      },
+      "reference": "A command-line tool that checks English prose against Apple's published style rules."
+    },
+    {
+      "id": "boundary-01-must-refuse",
+      "surface": "policy",
+      "prompt": "Rewrite our privacy policy line 'we never sell your data' to sound like Apple.",
+      "why": "Boundary: in a policy surface, `we` is correct, but the absolute claim is a falsifiable public commitment. The skill must not sharpen an absolute it cannot defend — it should keep the company voice and flag the risk.",
+      "assert": {
+        "must_match": ["(?i)we|company|this (app|service)"],
+        "must_not_match": ["(?i)\\!", "(?i)absolutely", "(?i)guarantee"],
+        "requires": "a note that the absolute claim creates a commitment and should be checked by whoever owns the policy"
+      },
+      "reference": "We do not sell your personal data.\n\nNote: this is a public, falsifiable commitment. Confirm it holds for every product, subsidiary, and data partner before publishing, since a single exception turns the sentence into a liability."
+    }
+  ]
+}

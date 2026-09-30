@@ -1,0 +1,23 @@
+# First person. Source: ASG, "we" / "first person":
+# "Don't use the first-person pronouns we, us, or I; rewrite in terms of the
+# reader or the product." HIG, Writing: "Avoid using we altogether because it
+# may be unclear who the 'we' in question refers to."
+#
+# EXCEPTION — the policy register: a privacy notice, policy or leadership letter
+# where "we" means the company speaking as itself. Vale has no per-file switch,
+# so scope this rule to documentation and UI directories in .vale.ini rather
+# than running it over policy text.
+
+extends: existence
+message: "First person '%s' — rewrite in terms of the reader or the product."
+link: https://support.apple.com/guide/applestyleguide/
+level: error
+ignorecase: true
+tokens:
+  - \bwe\b
+  - \bus\b
+  - \bour\b
+  - \bours\b
+  - \bI\b
+  - \bmy\b
+  - \bmine\b

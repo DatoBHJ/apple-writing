@@ -1,0 +1,14 @@
+# Punctuation and mechanics. Sources:
+#   ASG, apostrophes: "Use the curly apostrophe (Option-Shift-Right Bracket)
+#     except in code font and for units of measure."
+#   ASG, commas: "Use a serial comma before and or or in a list of three or more items."
+#   ASG, exclamation points: "OK to use exclamation points occasionally in
+#     promotional text and dialogue. Avoid in documentation."
+
+extends: existence
+message: "Exclamation mark — Apple's documentation permits none, and its marketing copy ships none."
+link: https://support.apple.com/guide/applestyleguide/
+level: error
+nonword: true
+tokens:
+  - '!'

@@ -1,0 +1,26 @@
+# Cuteness, blame and interjections. Source: HIG, Writing and Feedback —
+# "avoid the temptation to be too cute or clever"; errors must "avoid blame";
+# "Interjections like 'oops!' or 'uh-oh' are typically unnecessary and can
+# sound insincere."
+
+extends: existence
+message: "Not Apple's UI voice: '%s'. State the situation and the next action."
+link: https://developer.apple.com/design/human-interface-guidelines/writing
+level: error
+ignorecase: true
+tokens:
+  - oops
+  - uh-oh
+  - whoops
+  - click here
+  - let's do it
+  - you forgot
+  - you failed to
+  - your fault
+  - simply
+  - obviously
+  - just\s+\w+
+  - easy
+  - magic(al)?
+  - guess what
+  - ta-da

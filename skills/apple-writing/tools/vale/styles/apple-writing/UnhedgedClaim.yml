@@ -1,0 +1,11 @@
+# Wordy constructions and unhedged claims.
+# Source: ASG (wordiness entries) and the FTC's .com Disclosures guidance that
+# qualifications belong inside the claim "when practical".
+
+extends: existence
+message: "A comparative number without its hedge — add 'up to' / 'as much as' and attach the evidence."
+link: https://www.ftc.gov/business-guidance/resources/com-disclosures-how-make-effective-disclosures-digital-advertising
+level: warning
+ignorecase: true
+raw:
+  - '\b\d+(\.\d+)?\s*(x|times|%|percent)\s+(faster|slower|more|less|better|longer)\b(?![^.]{0,80}\b(up to|as much as|as many as)\b)'

@@ -1,0 +1,24 @@
+# --- Apple's copyrighted material: NOT redistributed ---
+# The skill ships a downloader instead (skills/apple-writing/tools/fetch-style-guide.sh).
+# Run it to rebuild the corpus locally if you want `fetch-apple-copy.sh grep` to work.
+research/apple-style-guide.pdf
+research/apple-style-guide.txt
+research/asg/
+
+# Bulk machine extracts of the guide (1,700 A–Z entries, rule dumps, draft tables).
+# Rebuildable from the PDF with the scripts beside them, which ARE tracked.
+research/tools/asgx/*.json
+research/tools/asgx/*.tsv
+research/tools/asgx/*.txt
+research/tools/asgx/table*.md
+research/tools/asgx/part-*.md
+
+# --- working scratch ---
+*.tmp
+.tmp/
+__pycache__/
+.DS_Store
+
+# --- local installs / caches ---
+node_modules/
+.venv/

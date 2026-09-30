@@ -1,0 +1,39 @@
+# Vale style for the apple-writing skill.
+# Rules are drawn from Apple's published guidance:
+#   ASG = Apple Style Guide, June 2026
+#   HIG = Human Interface Guidelines — Writing / Inclusion / Feedback
+# Every rule carries its source in the comment above it.
+
+extends: substitution
+message: "Use '%s' instead of '%s'."
+link: https://support.apple.com/guide/applestyleguide/
+level: error
+ignorecase: true
+swap:
+  # ASG, Latin: "Avoid using Latin abbreviations."
+  e\.g\.,?: for example
+  i\.e\.,?: that is
+  etc\.: and so on
+  et al\.: and others
+  # ASG A–Z entries and wordy-phrase entries
+  prior to: before
+  subsequent to: after
+  in order to: to
+  due to the fact that: because
+  in the event that: if
+  has the ability to: can
+  has the capability to: can
+  utilize(s|d|): use
+  leverage(s|d|): use
+  in close proximity to: near
+  at this point in time: now
+  for the purpose of: to
+  make use of: use
+  click on: click
+  in spite of the fact that: although
+  on a regular basis: regularly
+  in a timely manner: promptly
+  allows you to: lets you
+  take into consideration: consider
+  in addition to: besides
+  with the exception of: except
